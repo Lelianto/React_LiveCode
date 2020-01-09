@@ -20,7 +20,6 @@ const MainRoute = () => {
                 <Route exact path='/comedy' component={Comedy} />
                 <Route exact path='/login' component={SignIn} />
                 <Route exact path='/profile' component={Profile} />
-                {/* <Route path='/category/:category' component={Home} /> */}
             </Switch>
         </BrowserRouter>
     )
