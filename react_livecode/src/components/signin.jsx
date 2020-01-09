@@ -13,7 +13,7 @@ class SignIn extends React.Component {
         await this.props.postLogin()
         console.warn('string cek', this.props.is_login)
         if (this.props.is_login){
-            this.props.history.push("/profile");
+            this.props.history.push("/");
         }
     }
 
@@ -48,7 +48,7 @@ class SignIn extends React.Component {
                         onClick={this.doLogin}/>
                     </form>
 
-                {/* <!-- Remind Passowrd --> */}
+                {/* <!-- Remind Password --> */}
                 <div id="formFooter">
                 <a className="underlineHover" href="#">Forgot Password?</a>
                 </div>

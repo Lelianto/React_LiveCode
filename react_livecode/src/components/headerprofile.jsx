@@ -13,14 +13,12 @@ import { store, actions } from '../store'
 class Header extends React.Component {
 
     handleSignOut = () => {
-        store.setState({is_login:false});
-        this.props.history.push("/");
+        store.setState({
+            'is_login':false
+        });
+        console.warn('cek logout', store.is_login)
+        this.props.history.push("/login");
       };
-
-    filterByCategory = (word) => {
-        this.props.checkCategory(word)
-        this.props.history.replace('/category/'+word)
-    }
 
     render (){
         return (
@@ -42,8 +40,8 @@ class Header extends React.Component {
                                     <Link to='/'>Home</Link></li>
                                 <li className="navi">
                                     <Link to='/profile'>Profile</Link></li>
-                                <li className="navi">
-                                    <Link to='/login'>Login</Link></li>
+                                <li onClick={this.handleSignOut} className="navi">
+                                    <Link to='/login'>Logout</Link></li>
                             </ul>
                         </nav>
                     </div>
@@ -54,21 +52,4 @@ class Header extends React.Component {
     }
 }
 
-export default connect("category, isLoading",actions)(withRouter(Header));
-
-
-// CATATAN UNTUK SIGNOUT
-{/* <div className="col-md-1">
-    <img className="search1" src={logo_search} alt=""/>
-</div>
-<div className="col-md-2 user_in">
-    <nav>
-        <ul className="list-unstyled navigate">
-            <li className="navi1">
-                <Link to="/signin">Masuk</Link></li>
-            <li className="navi1">
-                <Link to='/' 
-                onClick={() => this.handleSignOut()}>Keluar</Link></li>
-        </ul>
-    </nav>
-</div> */}
+export default connect("is_login, isLoading",actions)(withRouter(Header));

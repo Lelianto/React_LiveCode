@@ -1,7 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import SignIn from "../components/signin";
-import Header from "../components/header";
+import Header from "../components/headerprofile";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { store, actions } from '../store';
@@ -11,8 +10,9 @@ const Profile = props => {
   const is_login = props.is_login;
   const email = props.email;
   const full_name = props.username;
+  const photo = props.photo;
   if (is_login === false) {
-    return <Redirect to={{ pathname: "/signin" }} />;
+    return <Redirect to={{ pathname: "/login" }} />;
   } else {
     return (
       <React.Fragment>
@@ -28,15 +28,21 @@ const Profile = props => {
           </h1>
           <p style={{
               textalign: "center",
-              marginTop: '50px'
+              marginTop: '200px'
             }}>
-            <label>Email:</label> {email}
+            <img style={{ width:'50px'}} src={photo}></img>
           </p>
           <p style={{
               textalign: "center",
               marginTop: '50px'
             }}>
-            <label>Nama Lengkap:</label> {full_name}
+            <label>Name:</label> {full_name}
+          </p>
+          <p style={{
+              textalign: "center",
+              marginTop: '50px'
+            }}>
+            <label>Email:</label> {email}
           </p>
         </section>
       </React.Fragment>
@@ -44,4 +50,4 @@ const Profile = props => {
   }
 };
 
-export default connect("is_login, email, username",actions)(withRouter(Profile));
+export default connect("is_login, email, photo, username",actions)(withRouter(Profile));
